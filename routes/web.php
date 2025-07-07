@@ -14,3 +14,10 @@ foreach (config('app.supported_locales') as $locale) {
         });
     });
 }
+
+//Route::get('/{locale}', function () {
+//    return view('welcome');
+//});
+//Route::get('/{locale}/dashboard', function () {
+//    return view('dashboard');
+//});
