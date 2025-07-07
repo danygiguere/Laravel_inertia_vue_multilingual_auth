@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PagesController;
 
 Route::redirect('/', '/'. App::getLocale());
 
@@ -9,9 +10,10 @@ foreach (config('app.supported_locales') as $locale) {
         Route::get('/', function () {
             return view('welcome');
         });
-        Route::get('/dashboard', function () {
-            return view('dashboard');
-        });
+//        Route::get('/dashboard', function () {
+//            return view('dashboard');
+//        });
+        Route::get('dashboard', [PagesController::class, 'dashboard'])->name('dashboard');
     });
 }
 
