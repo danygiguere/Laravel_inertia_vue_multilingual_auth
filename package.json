@@ -4,7 +4,9 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "build:ssr": "vite build && vite build --ssr",
+        "dev": "vite",
+        "dev:ssr": "concurrently \"vite\" \"vite build --ssr --watch\""
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",
