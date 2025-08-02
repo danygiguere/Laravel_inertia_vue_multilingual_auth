@@ -41,6 +41,12 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'locale' => app()->getLocale(),
+            'language' => function () {
+                return translations(
+                    base_path('lang/'. app()->getLocale() .'/inertia.json')
+                );
+            },
         ];
     }
 }

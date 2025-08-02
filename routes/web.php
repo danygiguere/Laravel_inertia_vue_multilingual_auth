@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\AuthController;
 
 Route::redirect('/', '/'. App::getLocale());
 
@@ -10,12 +11,10 @@ foreach (config('app.supported_locales') as $locale) {
         Route::get('/', function () {
             return view('welcome');
         });
-//        Route::get('/dashboard', function () {
-//            return view('dashboard');
-//        });
-        Route::get('dashboard', [PagesController::class, 'dashboard'])->name('dashboard');
+        Route::get('/dashboard', [PagesController::class, 'dashboard'])->name('dashboard');
     });
 }
+
 
 //Route::get('/{locale}', function () {
 //    return view('welcome');
@@ -23,3 +22,5 @@ foreach (config('app.supported_locales') as $locale) {
 //Route::get('/{locale}/dashboard', function () {
 //    return view('dashboard');
 //});
+
+require __DIR__ . '/auth.php';

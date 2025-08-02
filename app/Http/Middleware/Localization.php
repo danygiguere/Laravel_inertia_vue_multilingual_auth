@@ -4,9 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Inertia\Middleware;
 use Symfony\Component\HttpFoundation\Response;
 
-class Localization
+class Localization extends Middleware
 {
     /**
      * Handle an incoming request.
@@ -19,8 +20,10 @@ class Localization
             app()->setLocale('en');
         } elseif (request()->segment(1) == 'fr') {
             app()->setLocale('fr');
+        } else {
+//            app()->setLocale(config('app.locale'));
         }
-
+//        dd(app()->getLocale());
         return $next($request);
     }
 }
